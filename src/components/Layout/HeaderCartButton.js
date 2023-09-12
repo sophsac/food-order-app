@@ -13,7 +13,7 @@ const HeaderCartButton = props => {
             {/* will wrap text */}
             <span>Your Cart</span>
             {/* will wrap badge */}
-            <span className={classes.icon}>3</span>
+            <span className={classes.badge}>3</span>
         </button>
 
     );
