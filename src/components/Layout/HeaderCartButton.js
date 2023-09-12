@@ -1,18 +1,19 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import CartIcon from "../Cart/CartIcon";
+import classes from './HeaderCartButton.module.css';
 
 const HeaderCartButton = props => {
     return (
-        <button>
+        <button className={classes.button}>
             {/* will wrap icon */}
-            <span>
+            <span className={classes.icon}>
                 <CartIcon />
             </span>
             {/* will wrap text */}
-            <span></span>
+            <span>Your Cart</span>
             {/* will wrap badge */}
-            <span></span>
+            <span className={classes.icon}>3</span>
         </button>
 
     );
