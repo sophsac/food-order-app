@@ -1,6 +1,7 @@
 import React from "react";
 
 import classes from "./MealItem.module.css";
+import MealItemForm from "./MealItemForm";
 
 const MealItem = (props) => {
     //dynamic content into template literal
@@ -16,7 +17,7 @@ const MealItem = (props) => {
       </div>
       {/* form to allow users to enter amount of items/meals they want added to the cart */}
       <div>
-
+        <MealItemForm id={props.id} />
       </div>
     </li>
   );
