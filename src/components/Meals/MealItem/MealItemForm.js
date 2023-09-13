@@ -3,7 +3,7 @@
 import React from "react";
 
 import Input from "../../UI/Input";
-import classes from "./MealItem.module.css";
+import classes from "./MealItemForm.module.css";
 
 const MealItemForm = (props) => {
   return (
@@ -11,7 +11,7 @@ const MealItemForm = (props) => {
       <Input
         label="Amount"
         input={{
-          id: "amount",
+          id: "amount_" + props.id,
           type: "number",
           min: "1",
           max: "5",
