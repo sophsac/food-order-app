@@ -5,7 +5,7 @@ import classes from './HeaderCartButton.module.css';
 
 const HeaderCartButton = props => {
     return (
-        <button className={classes.button}>
+        <button className={classes.button} onClick={props.onClick}>
             {/* will wrap icon */}
             <span className={classes.icon}>
                 <CartIcon />
@@ -20,3 +20,11 @@ const HeaderCartButton = props => {
 };
 
 export default HeaderCartButton;
+
+// so the function received on onClick in headerCartButton is forwarded to 
+// the onClick prop on the button
+
+// chain of props
+// props.onClick in HeaderCartButton.js
+// > props.onShow in Header.js
+// > showCartHandler function in App.js
