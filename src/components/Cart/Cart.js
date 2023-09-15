@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
 import Modal from "../UI/Modal";
+import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
-import CartItem from "./CartItem";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -15,6 +15,10 @@ const Cart = (props) => {
   // render Order button if there's items in the cart
   const hasItems = cartCtx.items.length > 0;
 
+  const cartItemRemoveHandler = (id) => {};
+
+  const cartItemAddHandler = (item) => {};
+
   // map all cartItems to JSX element
   const cartItems = (
     <ul className={classes["cart-items"]}>
@@ -25,6 +29,11 @@ const Cart = (props) => {
           name={item.name}
           amount={item.amount}
           price={item.price}
+          // .bind ensures removal/addition is correct through id and whole item, respectively
+          // pre-configures a function for future execution
+          // pre-configures the argument that function will receive when it's being executed
+          onRemove={cartItemRemoveHandler.bind(null, item.id)}
+          onAdd={cartItemAddHandler.bind(null, item)}
         />
       ))}
     </ul>
