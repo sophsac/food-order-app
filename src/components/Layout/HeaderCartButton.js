@@ -7,6 +7,7 @@ import classes from "./HeaderCartButton.module.css";
 const HeaderCartButton = (props) => {
 
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+
   // header will be reevaluated when updated
   // updated in CartProvider component
   const cartCtx = useContext(CartContext);
@@ -15,28 +16,28 @@ const HeaderCartButton = (props) => {
 
   // .reduce() allows transformation of array into single value
   // takes 2 arguments
-  const numOfCartItems = cartCtx.items.reduce((currentNum, item) => {
+  const numOfCartItems = items.reduce((currentNum, item) => {
     return currentNum + item.amount;
   }, 0);
 
-  const btnClasses = `${classes.button} ${btnIsHighlighted ? blasses.bump : ''}`
+  const btnClasses = `${classes.button} ${btnIsHighlighted ? classes.bump : ''}`;
 
   useEffect(() => {
-    if (cartCtx.items.legth === 0) {
+    if (items.length === 0) {
       return;
     }
     setBtnIsHighlighted(true);
 
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setBtnIsHighlighted(false);
     }, 300);
 
-    // cleanup
+    // cleanup func - automatic 
     return () => {
       clearTimeout(timer);
     };
 
-  }, [cartCtx]);
+  }, [items]);
 
   return (
     <button className={btnClasses} onClick={props.onClick}>
