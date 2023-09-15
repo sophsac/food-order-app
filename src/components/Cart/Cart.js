@@ -19,6 +19,7 @@ const Cart = (props) => {
     cartCtx.removeItem(id);
   };
 
+  // will trigger addItem function in CartProvider component
   const cartItemAddHandler = (item) => {
     cartCtx.addItem({...item, amount: 1});
   };
