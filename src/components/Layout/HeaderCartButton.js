@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../store/cart-context";
 import classes from "./HeaderCartButton.module.css";
-import Cart from "../Cart/Cart";
 
 const HeaderCartButton = (props) => {
   // header will be reevaluated when updated

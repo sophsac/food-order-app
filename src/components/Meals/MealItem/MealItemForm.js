@@ -11,6 +11,7 @@ const MealItemForm = (props) => {
   // [state snapshot, state updating func]
   const [amountIsValid, setAmountIsValid] = useState(true);
 
+  // ref from Input.js, through forwardref() of whole component
   const amountInputRef =useRef();
 
   const submitHandler = event => {
