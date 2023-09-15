@@ -7,6 +7,10 @@ const MealItem = (props) => {
     //dynamic content into template literal
     const price = `$${props.price.toFixed(2)}`;
 
+    const addToCartHandler = amount => {
+
+    };
+
   return (
     <li className={classes.meal}>
       {/* title of item and details from props, from AvailableMeals */}
@@ -17,7 +21,7 @@ const MealItem = (props) => {
       </div>
       {/* form to allow users to enter amount of items/meals they want added to the cart */}
       <div>
-        <MealItemForm id={props.id} />
+        <MealItemForm onAddToCart={addToCartHandler} id={props.id} />
       </div>
     </li>
   );
