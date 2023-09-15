@@ -1,11 +1,11 @@
-import React, { useContext} from 'react';
+import React, { useContext } from "react";
 
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
-import CartContext from '../../store/cart-context';
+import CartContext from "../../store/cart-context";
+import CartItem from "./CartItem";
 
 const Cart = (props) => {
-
   const cartCtx = useContext(CartContext);
 
   // to always have $ 2dp as total amount
@@ -20,7 +20,12 @@ const Cart = (props) => {
     <ul className={classes["cart-items"]}>
       {/* to transform items to items in the cart */}
       {cartCtx.items.map((item) => (
-        <li>{item.name}</li>
+        <CartItem
+          key={item.id}
+          name={item.name}
+          amount={item.amount}
+          price={item.price}
+        />
       ))}
     </ul>
   );
