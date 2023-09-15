@@ -1,13 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../store/cart-context";
 import classes from "./HeaderCartButton.module.css";
 
 const HeaderCartButton = (props) => {
+
+  const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   // header will be reevaluated when updated
   // updated in CartProvider component
   const cartCtx = useContext(CartContext);
+
+  const { items } = cartCtx;
 
   // .reduce() allows transformation of array into single value
   // takes 2 arguments
@@ -15,8 +19,27 @@ const HeaderCartButton = (props) => {
     return currentNum + item.amount;
   }, 0);
 
+  const btnClasses = `${classes.button} ${btnIsHighlighted ? blasses.bump : ''}`
+
+  useEffect(() => {
+    if (cartCtx.items.legth === 0) {
+      return;
+    }
+    setBtnIsHighlighted(true);
+
+    setTimeout(() => {
+      setBtnIsHighlighted(false);
+    }, 300);
+
+    // cleanup
+    return () => {
+      clearTimeout(timer);
+    };
+
+  }, [cartCtx]);
+
   return (
-    <button className={classes.button} onClick={props.onClick}>
+    <button className={btnClasses} onClick={props.onClick}>
       {/* will wrap icon */}
       <span className={classes.icon}>
         <CartIcon />
