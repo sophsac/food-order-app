@@ -38,12 +38,11 @@ const AvailableMeals = () => {
       setIsLoading(false);
     };
 
-    try {
-      fetchMeals();
-    } catch (error) {
+    // handling an error inside of a promise
+    fetchMeals().catch(error => {
       setIsLoading(false);
       setHttpError(error.message)
-    };
+    });
 
   }, []);
 
