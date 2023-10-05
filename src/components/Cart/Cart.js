@@ -54,9 +54,7 @@ const Cart = (props) => {
   // if isCheckout(false), show close and order button
   const modalActions = 
     <div className={classes.action}>
-      <button className={classes["button--alt"]} onClick={props.onClose}>
-        Close
-      </button>
+      <button className={classes["button--alt"]} onClick={props.onClose}>Close</button>
       {hasItems && <button className={classes.button} onClick={orderHandler}>Order</button>}
     </div>
   ;
