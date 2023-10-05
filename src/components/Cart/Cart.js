@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 
+import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
-import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import Checkout from "./Checkout";
 
@@ -26,6 +26,7 @@ const Cart = (props) => {
     cartCtx.addItem({...item, amount: 1});
   };
 
+  // order button clicked to show checkout form
   const orderHandler = () => {
     setIsCheckout(true);
   }
@@ -53,10 +54,10 @@ const Cart = (props) => {
   // if isCheckout(false), show close and order button
   const modalActions = 
     <div className={classes.action}>
-    <button className={classes["button--alt"]} onClick={props.onClose}>
-      Close
-    </button>
-    {hasItems && <button className={classes.button} onClick={orderHandler}>Order</button>}
+      <button className={classes["button--alt"]} onClick={props.onClose}>
+        Close
+      </button>
+      {hasItems && <button className={classes.button} onClick={orderHandler}>Order</button>}
     </div>
   ;
 
@@ -67,9 +68,9 @@ const Cart = (props) => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={props.onClose} />}
+      {/* closes whole cart tab through props.onClose of Close button if cancel button in checkout is clicked */}
+      {isCheckout && <Checkout onCancel={props.onClose} />} 
       {!isCheckout && modalActions}
-
     </Modal>
   );
 };
